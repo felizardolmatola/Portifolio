@@ -70,8 +70,8 @@
         <p class="hero__tagline" data-i18n="hero.tagline">Criando experiências digitais incríveis com código limpo e
           design moderno</p>
         <div class="hero__cta">
-          <a href="#projetos" class="btn btn--primary" data-i18n="hero.cta.hire">Contrate-me!</a>
-          <a href="#contacto" class="btn btn--ghost" data-i18n="hero.cta.cv">DOWNLOAD CV</a>
+          <a href="https://wa.me/25875621738?text=Olá!%20Vi%20o%20seu%20portfólio%20e%20gostaria%20de%20conversar." target="_blank" class="btn btn--primary" data-i18n="hero.cta.hire">Contrate-me!</a>
+          <a href="https://docs.google.com/document/d/1ClHs5FVtJht-P24ZG0c0hu_ZMc3V2CpF/edit?usp=sharing&ouid=115796071339845191398&rtpof=true&sd=true" target="_blank" class="btn btn--ghost" data-i18n="hero.cta.cv">DOWNLOAD CV</a>
         </div>
 
         <!-- Links Sociais -->
@@ -401,7 +401,7 @@
       <div class="nome-fundo">Felizardo Matola</div>
 
       <!-- FORMULÁRIO COM FORMSPREE -->
-        <form class="form-contacto" id="contact-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+        <form class="form-contacto" id="contact-form" action="https://formspree.io/f/xjybylay" method="POST">
           <h3 data-i18n="form.title">Envie uma mensagem</h3>
           <div class="campo">
             <input type="text" name="name" id="form-name" placeholder="Seu Nome" required>
@@ -427,11 +427,21 @@
             </div>
           </div>
 
-          <div class="item-contato">
+          <div class="item-contato item-contato--mapa">
             <i class="fa-solid fa-location-dot icone-contato"></i>
             <div class="texto-contato">
               <span class="label" data-i18n="footer.location.label">Localização</span>
-              <span class="valor" data-i18n="footer.location.value">Moçambique</span>
+              <span class="valor" data-i18n="footer.location.value">Beira, Moçambique</span>
+              <span class="hora-local" id="hora-local" aria-live="polite">
+                <i class="fa-regular fa-clock"></i> <span id="hora-local-texto">--:--:--</span>
+              </span>
+              <a class="mapa-localizacao" href="https://www.google.com/maps?q=Beira,Mo%C3%A7ambique" target="_blank"
+                rel="noopener noreferrer" aria-label="Ver Beira, Moçambique no Google Maps">
+                <iframe
+                  src="https://maps.google.com/maps?q=Beira,Mo%C3%A7ambique&z=12&output=embed"
+                  loading="lazy" referrerpolicy="no-referrer-when-downgrade" tabindex="-1"
+                  title="Mapa de Beira, Moçambique"></iframe>
+              </a>
             </div>
           </div>
         </div>

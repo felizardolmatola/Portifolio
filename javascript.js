@@ -400,3 +400,20 @@ updateActiveNavOnScroll();
     modal404?.classList.remove('modal-404--open');
     window.location.hash = '';
   });
+
+  // 9. HORA LOCAL EM TEMPO REAL (Beira / Maputo — fuso Africa/Maputo)
+  const horaLocalTexto = document.getElementById('hora-local-texto');
+
+  function atualizarHoraLocal() {
+    if (!horaLocalTexto) return;
+    const agora = new Date().toLocaleTimeString('pt-PT', {
+      timeZone: 'Africa/Maputo',
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
+    });
+    horaLocalTexto.textContent = agora;
+  }
+
+  atualizarHoraLocal();
+  setInterval(atualizarHoraLocal, 1000);
