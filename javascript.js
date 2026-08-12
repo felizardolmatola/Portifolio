@@ -243,8 +243,8 @@ updateActiveNavOnScroll();
   };
 
   const frasesPorIdioma = {
-    pt: ['Felizardo Lázaro Matola', 'Desenvolvedor Fullstack', 'Desenvolvedor Web'],
-    en: ['Felizardo Lázaro Matola', 'Fullstack Developer', 'Web Developer']
+    pt: ['Felizardo Lázaro\nMatola', 'Desenvolvedor\nFullstack', 'Desenvolvedor\nWeb'],
+    en: ['Felizardo Lázaro\nMatola', 'Fullstack\nDeveloper', 'Web\nDeveloper']
   };
 
   const langButtons = document.querySelectorAll('.lang-switch__btn');
@@ -295,16 +295,40 @@ updateActiveNavOnScroll();
   // 4. Typewriter
   const typewriterElement = document.getElementById('typewriter');
   let fraseIndex = 0, charIndex = 0, isDeleting = false, timeoutId = null;
+  let typewriterTexto = null;
+
+  // Monta a estrutura interna: um span só para o texto digitado + o cursor
+  // logo em seguida, dentro do MESMO container. Assim o cursor sempre fica
+  // colado no último caractere digitado, mesmo mudando de linha.
+  function montarEstruturaTypewriter() {
+    if (!typewriterElement) return;
+
+    // Reaproveita um cursor já existente no HTML (se houver) em vez de duplicar
+    const cursorExistente = typewriterElement.parentElement?.querySelector('.cursor')
+      || document.querySelector('.cursor');
+
+    typewriterElement.innerHTML = '';
+
+    typewriterTexto = document.createElement('span');
+    typewriterTexto.className = 'typewriter__texto';
+    typewriterElement.appendChild(typewriterTexto);
+
+    const cursor = cursorExistente || document.createElement('span');
+    cursor.className = 'cursor';
+    cursor.setAttribute('aria-hidden', 'true');
+    if (!cursor.textContent) cursor.textContent = '|';
+    typewriterElement.appendChild(cursor);
+  }
 
   function digitarEfeito() {
     const frases = frasesPorIdioma[idiomaAtual] || frasesPorIdioma.pt;
     const fraseAtual = frases[fraseIndex % frases.length];
 
     if (isDeleting) {
-      typewriterElement.textContent = fraseAtual.substring(0, charIndex - 1);
+      typewriterTexto.innerHTML = fraseAtual.substring(0, charIndex - 1).replace(/\n/g, '<br>');
       charIndex--;
     } else {
-      typewriterElement.textContent = fraseAtual.substring(0, charIndex + 1);
+      typewriterTexto.innerHTML = fraseAtual.substring(0, charIndex + 1).replace(/\n/g, '<br>');
       charIndex++;
     }
 
@@ -326,33 +350,46 @@ updateActiveNavOnScroll();
     if (!typewriterElement) return;
     clearTimeout(timeoutId);
     fraseIndex = 0; charIndex = 0; isDeleting = false;
-    typewriterElement.textContent = '';
+    typewriterTexto.innerHTML = '';
     fixarLarguraTypewriter();
     digitarEfeito();
   }
 
-  // Trava a largura do elemento com base na frase mais longa do idioma atual,
-  // assim o texto nunca "empurra" o cursor ou qualquer outro elemento da página.
+  // Trava a largura (maior linha) e a altura (2 linhas) do elemento com base
+  // nas frases do idioma atual, assim o texto nunca "empurra" o cursor,
+  // a foto ou qualquer outro elemento da página enquanto digita/apaga.
   function fixarLarguraTypewriter() {
     if (!typewriterElement) return;
     const frases = frasesPorIdioma[idiomaAtual] || frasesPorIdioma.pt;
-    const maiorFrase = frases.reduce((a, b) => (a.length >= b.length ? a : b), '');
+    const estilo = window.getComputedStyle(typewriterElement);
 
-    // Mede a frase mais longa sem alterar o texto exibido no momento
     const medidor = document.createElement('span');
     medidor.style.visibility = 'hidden';
     medidor.style.position = 'absolute';
+    medidor.style.display = 'inline-block';
     medidor.style.whiteSpace = 'nowrap';
-    medidor.style.font = window.getComputedStyle(typewriterElement).font;
-    medidor.textContent = maiorFrase;
+    medidor.style.font = estilo.font;
+    medidor.style.lineHeight = estilo.lineHeight;
     document.body.appendChild(medidor);
-    const largura = medidor.offsetWidth;
+
+    let maiorLargura = 0;
+    let maiorAltura = 0;
+
+    frases.forEach(frase => {
+      medidor.innerHTML = frase.replace(/\n/g, '<br>');
+      maiorLargura = Math.max(maiorLargura, medidor.offsetWidth);
+      maiorAltura = Math.max(maiorAltura, medidor.offsetHeight);
+    });
+
     document.body.removeChild(medidor);
 
-    typewriterElement.style.minWidth = largura + 'px';
+    // Pequena folga para o cursor piscante caber sem ser cortado
+    typewriterElement.style.minWidth = (maiorLargura + 14) + 'px';
+    typewriterElement.style.minHeight = maiorAltura + 'px';
   }
 
   if (typewriterElement) {
+    montarEstruturaTypewriter();
     fixarLarguraTypewriter();
     digitarEfeito();
   }
