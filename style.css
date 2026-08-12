@@ -1347,6 +1347,13 @@ section {
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
   }
 
+  
+/* corrigido: quando o menu mobile abre, o fundo atrás do botão fica
+   var(--navy-950) e os traços (também navy-950) ficavam invisíveis */
+.nav__toggle--active span {
+  background-color: var(--white);
+}
+
   /* corrigido: os links ficavam navy escuro sobre fundo escuro (invisíveis) */
   .nav__links a {
     color: var(--white);
