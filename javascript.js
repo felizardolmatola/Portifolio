@@ -327,10 +327,35 @@ updateActiveNavOnScroll();
     clearTimeout(timeoutId);
     fraseIndex = 0; charIndex = 0; isDeleting = false;
     typewriterElement.textContent = '';
+    fixarLarguraTypewriter();
     digitarEfeito();
   }
 
-  if (typewriterElement) digitarEfeito();
+  // Trava a largura do elemento com base na frase mais longa do idioma atual,
+  // assim o texto nunca "empurra" o cursor ou qualquer outro elemento da página.
+  function fixarLarguraTypewriter() {
+    if (!typewriterElement) return;
+    const frases = frasesPorIdioma[idiomaAtual] || frasesPorIdioma.pt;
+    const maiorFrase = frases.reduce((a, b) => (a.length >= b.length ? a : b), '');
+
+    // Mede a frase mais longa sem alterar o texto exibido no momento
+    const medidor = document.createElement('span');
+    medidor.style.visibility = 'hidden';
+    medidor.style.position = 'absolute';
+    medidor.style.whiteSpace = 'nowrap';
+    medidor.style.font = window.getComputedStyle(typewriterElement).font;
+    medidor.textContent = maiorFrase;
+    document.body.appendChild(medidor);
+    const largura = medidor.offsetWidth;
+    document.body.removeChild(medidor);
+
+    typewriterElement.style.minWidth = largura + 'px';
+  }
+
+  if (typewriterElement) {
+    fixarLarguraTypewriter();
+    digitarEfeito();
+  }
 
   // 5. Disponibilidade
   const badgeDisponibilidade = document.getElementById('badge-disponibilidade');
