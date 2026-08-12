@@ -240,6 +240,12 @@ section {
   transform: translateY(-9px) rotate(-45deg);
 }
 
+/* corrigido: quando o menu mobile abre, o fundo atrás do botão fica
+   var(--navy-950) e os traços (também navy-950) ficavam invisíveis */
+.nav__toggle--active span {
+  background-color: var(--white);
+}
+
 /* ============================================
    HERO
 ============================================ */
@@ -1337,7 +1343,7 @@ section {
     justify-content: center;
     align-items: center;
     gap: 2rem;
-    transition: right 0.4s ease-in-out;
+    transition: 0.4s ease-in-out;
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
   }
 
@@ -1589,7 +1595,7 @@ section {
   & .campo textarea {
     width: 50%;
     padding: 12px;
-    background: rgba(255, 255, 255, 0.05);
+    background:white;
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 6px;
     color: #fff;
