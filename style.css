@@ -264,6 +264,14 @@ section {
   background-size: contain;
 }
 
+/* Impede que o texto (ex.: quando a fonte Fraunces termina de carregar e
+   fica mais larga) "empurre" a grade e espreme a coluna da foto.
+   Sem isto, o navegador nunca deixa esta coluna ficar menor que o
+   conteúdo mínimo dela, o que forçava .hero__portrait a encolher. */
+.hero__text {
+  min-width: 0;
+}
+
 .eyebrow {
   font-family: var(--font-body);
   font-size: 24px;
@@ -361,6 +369,7 @@ section {
   position: relative;
   display: flex;
   justify-content: center;
+  min-width: 0;
 }
 
 .hero__frame {

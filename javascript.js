@@ -392,6 +392,13 @@ updateActiveNavOnScroll();
     montarEstruturaTypewriter();
     fixarLarguraTypewriter();
     digitarEfeito();
+
+    // Quando a fonte customizada (Fraunces) terminar de carregar, a largura
+    // do texto pode mudar em relação à fonte substituta usada na primeira
+    // medição. Remedimos nesse momento para manter tudo estável.
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(fixarLarguraTypewriter);
+    }
   }
 
   // 5. Disponibilidade
@@ -419,21 +426,7 @@ updateActiveNavOnScroll();
 
   atualizarDisponibilidade();
 
-  // 6. SCROLL REVEAL (Animação Suave das Secções)
-  const revealElements = document.querySelectorAll('.reveal');
-  const revealOnScroll = () => {
-    const windowHeight = window.innerHeight;
-    revealElements.forEach(el => {
-      const elementTop = el.getBoundingClientRect().top;
-      if (elementTop < windowHeight - 100) {
-        el.classList.add('reveal--active');
-      }
-    });
-  };
-  window.addEventListener('scroll', revealOnScroll);
-  revealOnScroll(); // Executa na carga inicial
-
-  // 7. FORMULÁRIO DE CONTACTO (Formspree AJAX)
+  // 6. FORMULÁRIO DE CONTACTO (Formspree AJAX)
   const contactForm = document.getElementById('contact-form');
   const formStatus = document.getElementById('form-status');
 
