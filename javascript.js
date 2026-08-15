@@ -243,7 +243,7 @@ updateActiveNavOnScroll();
   };
 
   const frasesPorIdioma = {
-    pt: ['Felizardo Lázaro\nMatola', 'Desenvolvedor\nFullstack', 'Desenvolvedor\nWeb'],
+    pt: ['Felizardo Lázaro\nMatola', 'Resolução e\nInovação.', 'Desenvolvedor\nWeb'],
     en: ['Felizardo Lázaro\nMatola', 'Fullstack\nDeveloper', 'Web\nDeveloper']
   };
 
