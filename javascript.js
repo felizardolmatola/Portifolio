@@ -85,15 +85,26 @@ updateActiveNavOnScroll();
 
   // 2. Efeito Header & Botão "Voltar ao Topo"
   const backToTopBtn = document.getElementById('backToTop');
+  let ultimoScrollY = window.scrollY;
 
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
+    const scrollAtual = window.scrollY;
+
+    if (scrollAtual > 50) {
       header?.classList.add('nav--scrolled');
     } else {
       header?.classList.remove('nav--scrolled');
     }
 
-    if (window.scrollY > 300) {
+    // Esconde a navbar ao descer, mostra ao subir (mantém visível perto do topo)
+    if (scrollAtual > ultimoScrollY && scrollAtual > 150) {
+      header?.classList.add('nav--hidden');
+    } else {
+      header?.classList.remove('nav--hidden');
+    }
+    ultimoScrollY = scrollAtual;
+
+    if (scrollAtual > 300) {
       backToTopBtn?.classList.add('back-to-top--visible');
     } else {
       backToTopBtn?.classList.remove('back-to-top--visible');

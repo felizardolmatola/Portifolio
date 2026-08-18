@@ -99,13 +99,18 @@ section {
   justify-content: space-between;
   padding: 1.5rem clamp(20px, 5vw, 64px);
   background: transparent;
-  transition: background-color 0.3s ease, padding 0.3s ease;
+  transition: background-color 0.3s ease, padding 0.3s ease, transform 0.35s ease;
 }
 
 .nav--scrolled {
   background-color: rgba(250, 248, 243, 0.85);
   backdrop-filter: blur(10px);
   padding: 1rem clamp(20px, 5vw, 64px);
+}
+
+/* Esconde a navbar ao descer a página, mostra ao subir */
+.nav--hidden {
+  transform: translateY(-110%);
 }
 
 .nav__brand {
@@ -258,10 +263,6 @@ section {
   gap: clamp(32px, 6vw, 72px);
   align-items: center;
   position: relative;
-  background-image: url('./image.png');
-  background-repeat: no-repeat;
-  background-position: top left;
-  background-size: contain;
 }
 
 /* Impede que o texto (ex.: quando a fonte Fraunces termina de carregar e
