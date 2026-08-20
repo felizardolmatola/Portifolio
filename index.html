@@ -15,8 +15,8 @@
     href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
     rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css">
-  <script src="javascript.js" defer></script>
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <script src="./assets/js/javascript.js" defer></script>
 
   <!-- Font Awesome para os ícones -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -36,7 +36,7 @@
 
   <!-- NAV HEADER -->
   <header class="nav">
-    <a href="#topo" class="nav__brand"><img src="logotipo.png" alt="Felizardo Matola" class="nav__brand-logo"></a>
+    <a href="#topo" class="nav__brand"><img src="./assets/imgs/logotipo.png" alt="Felizardo Matola" class="nav__brand-logo"></a>
     <nav class="nav__links">
       <a href="#sobre" data-i18n="nav.sobre">Sobre</a>
       <a href="#skills" data-i18n="nav.skills">Skills</a>
@@ -45,11 +45,13 @@
     </nav>
     <div class="nav__actions">
       <div class="lang-switch" role="group" aria-label="Selecionar idioma / Select language">
+        <i class="fa-solid fa-language lang-switch__icon" aria-hidden="true"></i>
         <button type="button" class="lang-switch__btn" id="langPt" data-lang="pt" aria-pressed="true">
-          <span class="lang-switch__flag" aria-hidden="true">🇲🇿</span>PT
+          PT
         </button>
+        <span class="lang-switch__divider" aria-hidden="true"></span>
         <button type="button" class="lang-switch__btn" id="langEn" data-lang="en" aria-pressed="false">
-          <span class="lang-switch__flag" aria-hidden="true">🇬🇧</span>EN
+          EN
         </button>
       </div>
       <button class="nav__toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
@@ -90,7 +92,7 @@
       <div class="hero__portrait">
         <div class="hero__watermark" aria-hidden="true">FELIZARDO<br>MATOLA</div>
         <div class="hero__frame">
-          <img src="./corpo.png" alt="Retrato de Felizardo Lázaro Matola" />
+          <img src="./assets/imgs/corpo.png" alt="Retrato de Felizardo Lázaro Matola" />
         </div>
 
         <!-- Badge "disponível" flutuante, lado direito, centrado verticalmente -->
@@ -139,7 +141,7 @@
             </svg>
           </div>
           <div class="sobre-mim-imagem img">
-            <img src="./sobre.png" alt="Felizardo Lázaro Matola" class="sua-classe-da-foto" />
+            <img src="./assets/imgs/sobre.png" alt="Felizardo Lázaro Matola" class="sua-classe-da-foto" />
           </div>
         </div>
 
@@ -148,16 +150,16 @@
           <h2 data-i18n="sobre.heading">Um pouco sobre mim e minha trajetória na programação</h2>
 
           <p data-i18n="sobre.p1">
-            Sou Felizardo Lázaro Matola, um apaixonado por programação e tecnologia! Aos 21 anos, já tive a incrível
-            oportunidade de participar de projetos que marcaram minha trajetória, como o desenvolvimento de uma
-            aplicação pela Rocketseat em 2025. Essas experiências me ensinaram a importância de inovar e me desafiar
-            constantemente.
+            Sou Lázaro Matola, também conhecido como Felizardo, e tenho uma grande paixão por tecnologia e programação!
+            Com apenas 21 anos, já tive a oportunidade incrível de participar de projetos que deixaram uma marca na minha jornada,
+            como o desenvolvimento de um portfólio profissional pela Rocketseat. Essas experiências me mostraram a relevância de sempre inovar e me desafiar. 
           </p>
           <p data-i18n="sobre.p2">
-            Desenvolvo projetos para web há cerca de 2 anos, quando comecei a programar em HTML, CSS e JavaScript focado
-            no front-end. Atualmente sou um desenvolvedor fullstack com experiência na criação de aplicações completas,
-            com backends seguros e escaláveis e interfaces modernas e intuitivas. Meu maior objetivo é criar projetos
-            que impactem de forma positiva a vida das pessoas.
+            Trabalho em projetos em que atuo principalmente na parte de interfaces, onde desenvolvi uma excelente competência.
+            Comecei a minha trajetória na programação com HTML, CSS e JavaScript, concentrando-me no front-end. Atualmente, 
+            sou um desenvolvedor fullstack com vivência na criação de aplicações completas, com backends que são seguros e escaláveis, 
+            além de interfaces que são modernas e intuitivas. Meu principal objetivo é desenvolver projetos que tenham um impacto positivo na vida das pessoas.
+
           </p>
 
           <a href="#projetos" class="botao-projetos">
@@ -184,15 +186,17 @@
             <span class="instituicao">Autodidacta / Cursos Online (2023)</span>
             <p data-i18n="cert2.desc">Domínio de fundamentos HTML5, CSS3 avançado, JavaScript assíncrono e boas práticas de UI/UX.</p>
           </div>
-        </div>
-      </div>
-      <div class="conteudo-certificados">
-        <div class="grid-certificados">
+          <div class="card-certificado">
+            <div class="icone-cert"><i class="fa-solid fa-graduation-cap"></i></div>
+            <h3 data-i18n="cert4.title">Tecnologia de Informação</h3>
+            <span class="instituicao">Brigham Young University</span>
+            <p data-i18n="cert4.desc">Ainda a cursar, com conclusão prevista para 2030.</p>
+          </div>
           <div class="card-certificado">
             <div class="icone-cert"><i class="fa-solid fa-graduation-cap"></i></div>
             <h3 data-i18n="cert3.title">Inovação da Tecnologia</h3>
             <span class="instituicao">Rocketseat (2025)</span>
-            <p data-i18n="cert3.desc">Aprendi a ter ideias de Inovação dentro da Tecnologia.</p>
+            <p data-i18n="cert3.desc">Aprendi a desenvolver ideias inovadoras dentro da tecnologia.</p>
           </div>
         </div>
       </div>
@@ -209,22 +213,19 @@
           <div class="card-projeto">
             <span class="numero-projeto">01</span>
             <div class="container-imagem">
-              <img src="./Container.png" alt="Projeto 01 — captura de ecrã da aplicação">
+              <img src="./assets/projetos/impactos.png" alt="Projeto 01 — captura de ecrã da aplicação">
             </div>
-            <P>
-              Pagina de Receitas, com funcionalidades de saber todos os ingredientes de receita de um cupycke. <br> 
-              O projeto foi desenvolvido utilizando Html5 e CSS3 para o front-end e Figma para o design.
-            </P>
+            <p data-i18n="projeto1.desc">
+            </p>
           </div>
 
           <!-- PROJETO 02 -->
           <div class="card-projeto">
             <span class="numero-projeto">02</span>
             <div class="container-imagem">
-              <img src="./two.jpg" alt="Projeto 02 — captura de ecrã da aplicação">
+              <img src="./assets/projetos/khuluma.png" alt="Projeto 02 — captura de ecrã da aplicação">
             </div>
-            <p>
-              Design Grafico UX/UI.
+            <p data-i18n="projeto2.desc">
             </p>
           </div>
 
@@ -232,10 +233,10 @@
           <div class="card-projeto">
             <span class="numero-projeto">03</span>
             <div class="container-imagem">
-              <img src="./three.jpg" alt="Projeto 03 — captura de ecrã da aplicação">
+              <img src="./assets/projetos/three.jpg" alt="Projeto 03 — captura de ecrã da aplicação">
             </div>
-            <p>
-              Design Grafico UX/UI.
+            <p data-i18n="projeto3.desc">
+              Design Gráfico UX/UI.
             </p>
           </div>
         </div>
@@ -256,7 +257,7 @@
           "O Felizardo tem um domínio impressionante de React e Node.js. Além do código limpo, demonstrou muita proatividade e facilidade de comunicação durante toda a integração do projeto."
         </p>
         <div class="autor-depoimento">
-          <img src="./depoiment .jpg" alt="Julio Benjamim" class="foto-autor">
+          <img src="./assets/imgs/depoiment .jpg" alt="Julio Benjamim" class="foto-autor">
           <div class="info-autor">
             <h4><a href="#" target="_blank" rel="noopener noreferrer" class="link-linkedin-autor">Julio Benjamim <i class="fa-brands fa-linkedin"></i></a></h4>
             <span data-i18n="depoimentos.card2.role">Desenvolvedor fullstack</span>
@@ -377,9 +378,9 @@
           <!-- CARD EXPERIÊNCIA 1 — Desenvolvedor Back End JR (mais recente) -->
           <div class="item-experiencia">
             <div class="bloco-esquerdo">
-              <h3 data-i18n="exp3.title">Desenvolvedor Back end JR</h3>
+              <h3 data-i18n="exp3.title">Desenvolvedor Back End JR</h3>
               <span class="empresa">Rocketseat</span>
-              <span class="data" data-i18n="exp3.date">janeiro 2026 - atualmente</span>
+              <span class="data" data-i18n="exp3.date">Janeiro 2026 - atualmente</span>
             </div>
             <div class="bloco-centro"></div>
             <div class="bloco-direito">
@@ -391,13 +392,13 @@
           <!-- CARD EXPERIÊNCIA 2 — Técnico em Informática (atual) -->
           <div class="item-experiencia">
             <div class="bloco-esquerdo">
-              <h3 data-i18n="exp4.title">Tecnico em Informatica</h3>
-              <span class="empresa" data-i18n="exp4.company">Universidade catolica de Moçambique</span>
+              <h3 data-i18n="exp4.title">Técnico em Informática</h3>
+              <span class="empresa" data-i18n="exp4.company">Universidade Católica de Moçambique</span>
               <span class="data" data-i18n="exp4.date">Janeiro 2026 - atualmente</span>
             </div>
             <div class="bloco-centro"></div>
             <div class="bloco-direito">
-              <p data-i18n="exp4.desc">Adiquerindo conhecimento sobre a tecnologia de informação e desenvolvimento de software.</p>
+              <p data-i18n="exp4.desc">Adquirindo conhecimento sobre a tecnologia de informação e desenvolvimento de software.</p>
             </div>
           </div>
 
@@ -419,7 +420,7 @@
           <!-- CARD EXPERIÊNCIA 4 — Designer Gráfico UX/UI (mais antiga) -->
           <div class="item-experiencia">
             <div class="bloco-esquerdo">
-              <h3 data-i18n="exp2.title">Designer Grafico UX/UI</h3>
+              <h3 data-i18n="exp2.title">Designer Gráfico UX/UI</h3>
               <span class="empresa" data-i18n="exp2.company">Figma</span>
               <span class="data" data-i18n="exp2.date">Janeiro 2025 - Dezembro 2025</span>
             </div>
