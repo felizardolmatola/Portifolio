@@ -267,7 +267,7 @@ section {
   margin: 0 auto;
   padding: clamp(48px, 8vw, 96px) clamp(20px, 5vw, 64px) clamp(64px, 8vw, 96px);
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-columns: 1fr 1fr;
   gap: clamp(32px, 6vw, 72px);
   align-items: center;
   position: relative;
@@ -384,58 +384,14 @@ section {
 .hero__frame {
   position: relative;
   width: 100%;
-  max-width: 400px;
-  aspect-ratio: 3 / 4;
-  border-radius: 28px;
-  overflow: hidden;
-  box-shadow: 0 24px 60px rgba(10, 17, 40, 0.22);
+  max-width: 560px;
   z-index: 1;
-  transition: max-width 0.45s ease, transform 0.45s ease, box-shadow 0.45s ease;
 }
 
 .hero__frame img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-}
-
-/* 1. Elevação e brilho dourado na moldura */
-.hero__frame:hover {
-  transform: translateY(-8px) scale(1.02);
-  border-color: #D4AF37; /* Dourado destacado */
-  box-shadow: 0 15px 30px rgba(212, 175, 55, 0.35),
-              0 0 20px rgba(255, 215, 0, 0.2);
-}
-
-/* 2. Zoom suave na imagem interna */
-.hero__frame:hover img {
-  transform: scale(1.08);
-  filter: brightness(1.05) contrast(1.05);
-}
-
-/* 3. Facho de luz reluzente (efeito espelho/vidro) */
-.hero__frame::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -75%;
-  width: 30%;
-  height: 200%;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.35) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  transform: rotate(25deg);
-  pointer-events: none;
-  transition: none;
-}
-
-.hero__frame:hover::after {
-  left: 140%;
-  transition: left 0.75s ease-in-out;
+  height: auto;
+  display: block;
 }
 
 .hero__watermark {
@@ -1273,7 +1229,7 @@ section {
   }
 
   .hero__frame {
-    max-width: 320px;
+    max-width: 380px;
   }
 
   .hero__watermark {
