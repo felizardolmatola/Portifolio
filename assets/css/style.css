@@ -1264,7 +1264,50 @@ section {
     flex-wrap: wrap;
     justify-content: center;
   }
+}
 
+@media (max-width: 480px) {
+  .metricas-wrap {
+    width: 100%;
+    padding: 0 12px;
+  }
+
+  .metricas {
+    width: 100%;
+    gap: 10px;
+    padding: 12px 14px;
+    justify-content: space-between;
+  }
+
+  .item-metrica {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .item-metrica + .item-metrica::before {
+    left: -5px;
+  }
+
+  .icone-circulo {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 6px;
+  }
+
+  .icone-circulo i {
+    font-size: 12px;
+  }
+
+  .numero {
+    font-size: 14px;
+  }
+
+  .legenda {
+    font-size: 9.5px;
+  }
+}
+
+@media (max-width: 768px) {
   /* --- Sobre mim --- */
   .sobre-mim-container {
     grid-template-columns: 1fr;
